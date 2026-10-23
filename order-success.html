@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order placed - Practice Store</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="top"><a href="shop.html">Practice Store</a></header>
+<main>
+  <h1>Thank you, your order is placed</h1>
+  <p class="lead" id="msg">Order details will appear here.</p>
+  <p><a class="btn" href="shop.html">Back to shop</a> <a class="btn alt" href="index.html">Practice hub</a></p>
+</main>
+<script>
+  var o = JSON.parse(sessionStorage.getItem("lastOrder") || "null");
+  if (o) {
+    document.getElementById("msg").textContent = "Order " + o.id + " - total $" + o.total + " (" + o.pay + ")";
+    sessionStorage.removeItem("lastOrder");
+  }
+</script>
+</body></html>

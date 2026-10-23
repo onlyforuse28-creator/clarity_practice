@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BrightPath Web Services</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="top"><a href="index.html">BrightPath Web Services</a>
+  <nav><a href="shop.html">Sales site</a><a href="#quote">Get a quote</a></nav></header>
+<main>
+  <div class="two">
+    <div>
+      <h1>A simple website for your small business, ready in two weeks</h1>
+      <p class="lead">We design, build and host. Tell us what you need and we reply within one working day.</p>
+      <p><a class="btn" href="#quote">Get a free quote</a>
+         <a class="btn alt" href="tel:+920000000000">Call us</a></p>
+      <div class="note">This is a fake business for practice.</div>
+      <h2>What you get</h2>
+      <div class="row"><span>Mobile-friendly design</span><span>Included</span></div>
+      <div class="row"><span>Contact form and WhatsApp button</span><span>Included</span></div>
+      <div class="row"><span>Hosting for one year</span><span>Included</span></div>
+    </div>
+    <form class="card" id="quote">
+      <h2>Request a quote</h2>
+      <label for="name">Your name</label><input id="name" required>
+      <label for="email">Email</label><input id="email" type="email" required>
+      <label for="service">Service needed</label>
+      <select id="service"><option>New website</option><option>Redesign</option><option>Online store</option></select>
+      <label for="budget">Budget</label>
+      <select id="budget"><option>Under $500</option><option>$500 - $1,500</option><option>Above $1,500</option></select>
+      <label for="msg">Message</label><textarea id="msg" rows="3"></textarea>
+      <p><button class="btn" type="submit">Send my request</button></p>
+    </form>
+  </div>
+</main><footer>Practice project. Use fake data only.</footer>
+<script>
+  document.getElementById("quote").addEventListener("submit", function(e){
+    e.preventDefault();
+    window.location.href = "lead-success.html";
+  });
+</script>
+</body></html>

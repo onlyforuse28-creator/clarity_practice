@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout - Practice Store</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="top"><a href="shop.html">Practice Store</a><nav><a href="shop.html">Keep shopping</a></nav></header>
+<main>
+  <h1>Your cart</h1>
+  <div class="two">
+    <div class="card"><h2>Items</h2><div id="items"></div>
+      <div class="row"><strong>Total</strong><strong id="total">$0</strong></div></div>
+    <form class="card" id="orderForm">
+      <h2>Delivery details</h2>
+      <div class="note">Use fake data only.</div>
+      <label for="name">Full name</label><input id="name" required>
+      <label for="email">Email</label><input id="email" type="email" required>
+      <label for="city">City</label><input id="city" required>
+      <label for="pay">Payment method</label>
+      <select id="pay"><option>Cash on delivery</option><option>Card (fake)</option></select>
+      <p><button class="btn" type="submit">Place order</button></p>
+    </form>
+  </div>
+</main>
+<script src="shop.js"></script>
+<script>
+  var cart = getCart();
+  document.getElementById("items").innerHTML = cart.length
+    ? cart.map(function(i){return '<div class="row"><span>'+i.name+' x '+i.qty+'</span><span>$'+(i.price*i.qty)+'</span></div>';}).join("")
+    : '<p>Your cart is empty. <a href="shop.html">Go to the shop</a>.</p>';
+  document.getElementById("total").textContent = "$" + cartTotal();
+
+  document.getElementById("orderForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!cart.length){ alert("Cart is empty. Add a product first."); return; }
+    sessionStorage.setItem("lastOrder", JSON.stringify({
+      id: "ORD-" + Math.floor(Math.random()*90000+10000),
+      total: cartTotal(), pay: document.getElementById("pay").value
+    }));
+    localStorage.removeItem("cart");
+    window.location.href = "order-success.html";
+  });
+</script>
+</body></html>
